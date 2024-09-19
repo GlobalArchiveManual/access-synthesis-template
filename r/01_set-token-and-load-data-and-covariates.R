@@ -28,20 +28,15 @@ CheckEM::ga_api_set_token()
 # Load the saved token
 token <- readRDS("secrets/api_token.RDS")
 
-# Load the covariate data set ----
-# We will update the covariate data set in the private repository
-# The function will warn you if you do not have access to the data
-covariates <- CheckEM::load_rds_from_github(url = "https://raw.githubusercontent.com/GlobalArchiveManual/australia-synthesis-2024/main/data/tidy/australian-synthesis_covariates.RDS")
-
 # Load the metadata, count and length ----
 # This way does not include the zeros where a species isn't present - it returns a much smaller dataframe
-CheckEM::ga_api_all_data(synthesis_id = "19",
+CheckEM::ga_api_all_data(synthesis_id = "XXXX", # change the synthesis_id here
                          token = token,
                          dir = "data/raw/",
                          include_zeros = FALSE)
 
 ## This way DOES include the zeros where a species isn't present - it returns a much, much, larger dataframe
-# CheckEM::ga_api_all_data(synthesis_id = "19",
+# CheckEM::ga_api_all_data(synthesis_id = "XXXX", # change the synthesis_id here
 #                          token = token,
 #                          dir = "data/raw/",
 #                          include_zeros = TRUE)
